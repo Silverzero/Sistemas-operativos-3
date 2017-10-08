@@ -1,0 +1,15 @@
+gcc  -g -Wall -DPOSIX_BARRIER  -I. -c list_sol.c -o list_sol.o  -Wall
+gcc  -g -Wall -DPOSIX_BARRIER  -I. -c main.c -o main.o  -Wall
+gcc  -g -Wall -DPOSIX_BARRIER  -I. -c sched.c -o sched.o  -Wall
+gcc  -g -Wall -DPOSIX_BARRIER  -I. -c slist.c -o slist.o  -Wall
+gcc  -g -Wall -DPOSIX_BARRIER  -I. -c barrier.c -o barrier.o  -Wall
+gcc  -g -Wall -DPOSIX_BARRIER  -I. -c sched_rr_mlev.c -o sched_rr_mlev.o  -Wall
+sched_rr_mlev.c: En la función ‘pick_next_task_rr_mlev’:
+sched_rr_mlev.c:13:1: aviso: no hay una declaración de devolución en la función que no devuelve void [-Wreturn-type]
+ static task_t* pick_next_task_rr_mlev(runqueue_t* rq,int cpu) {}
+ ^
+sched_rr_mlev.c: En la función ‘steal_task_rr_mlev’:
+sched_rr_mlev.c:20:1: aviso: no hay una declaración de devolución en la función que no devuelve void [-Wreturn-type]
+ static task_t* steal_task_rr_mlev(runqueue_t* rq,int cpu){}
+ ^
+gcc  -o  schedsim list_sol.o main.o sched.o slist.o barrier.o sched_rr_mlev.o -lpthread
